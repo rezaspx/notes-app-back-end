@@ -4,7 +4,7 @@ const notes = require('./notes');
 const addNoteHandler = (request, h) => {
   const { title, tags, body } = request.payload;
   //   {
-  //       string,
+  //       id: string,
   //       title: string,
   //       createdAt: string,
   //       updatedAt: string,
