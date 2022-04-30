@@ -2,6 +2,7 @@ const Hapi = require('@hapi/hapi');
 // const routes = require('./routes'); tidak di pake lagi
 const notes = require('./api/notes');
 const NotesService = require('./services/inMemory/NotesService');
+const NotesValidator = require('./validator/notes');
 // const notesPlugin = require('./notesPlugin');
 // const otherPlugin = require('./otherPlugin');
 
@@ -24,6 +25,7 @@ const init = async () => {
     plugin: notes,
     options: {
       service: notesService,
+      validator: NotesValidator,
     },
   });
 
