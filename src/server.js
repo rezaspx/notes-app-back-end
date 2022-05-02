@@ -1,8 +1,13 @@
+/* eslint-disable camelcase */
+
+require('dotenv').config();
 const Hapi = require('@hapi/hapi');
 // const routes = require('./routes'); tidak di pake lagi
 const notes = require('./api/notes');
-const NotesService = require('./services/inMemory/NotesService');
+const NotesService = require('./services/postgres/NotesService');
+// const NotesService = require('./services/inMemory/NotesService');
 const NotesValidator = require('./validator/notes');
+
 // const notesPlugin = require('./notesPlugin');
 // const otherPlugin = require('./otherPlugin');
 
@@ -10,8 +15,11 @@ const init = async () => {
   const notesService = new NotesService();
 
   const server = Hapi.server({
-    port: 5000,
-    host: 'localhost',
+    port: process.env.PORT,
+    host: process.env.HOST,
+    // dibawah host sebelumnya
+    // port: 5000,
+    // host: 'localhost',
     routes: {
       cors: {
         origin: ['*'],
